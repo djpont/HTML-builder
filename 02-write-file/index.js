@@ -10,12 +10,12 @@ try {
   const reading = Readable.from(stdin);
 
   console.log(
-    'Вводите текст, он будет сохранён в text.txt. Для завершения поставьте пустую строку:',
+    'Вводите текст, он будет сохранён в text.txt. Для завершения напишите exit:',
   );
 
   reading.on('data', (chunk) => {
     const text = `${chunk}`;
-    if (text === '\n') {
+    if (text.trim() === 'exit') {
       reading.destroy();
       return;
     }
